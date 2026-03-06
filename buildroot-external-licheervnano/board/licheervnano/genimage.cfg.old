@@ -1,0 +1,24 @@
+image sdcard.img {
+  hdimage {
+    partition-table-type = "mbr"
+  }
+
+  partition boot {
+    partition-type = 0x0C
+    filesystem = "vfat"
+    size = 64M
+
+    file Image {
+      image = "Image"
+    }
+
+    file sg2002-licheerv-nano.dtb {
+      image = "sg2002-licheerv-nano.dtb"
+    }
+  }
+
+  partition rootfs {
+    partition-type = 0x83
+    image = "rootfs.ext4"
+  }
+}
